@@ -34,4 +34,26 @@ lr=LinearRegression()
 
 lr.fit(X_train, y_train)
 
+##Get the training score and test score
+trainingscore = lr.score(X_train, y_train)
+testscore = lr.score(X_test, y_test)
 
+print(trainingscore)
+print(testscore)
+
+##Setting up features to use to predict with my model
+d = {"carat": 0.7,
+     "cut": 4,
+     "color": 1,
+     "clarity": 5,
+     "depth": 62.4,
+     "table": 60.0,
+     "x": 5.57,
+     "y": 5.61,
+     "z": 3.49}
+
+new_diamond = [d["carat"], d["cut"], d["color"], d["clarity"], d["depth"], d["table"], d["x"], d["y"], d["z"]]
+X_new = [new_diamond]
+
+##prediction based on model
+lr.predict(X_new)
