@@ -12,3 +12,26 @@ dfdi.clarity = pd.Categorical(dfdi.clarity)
 dfdi.cut = dfdi.cut.cat.codes  
 dfdi.color = dfdi.color.cat.codes
 dfdi.clarity = dfdi.clarity.cat.codes
+
+##define the two variables X as a feature dataset and y as a target dataset
+features = list(dfdi.columns)
+features.remove("price")
+
+target = "price"
+
+X = dfdi[features]
+y = dfdi[target]
+
+##Split X and y into two training datasets X_train and y_train and two test datasets X_text and y_test
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+##new linear regression model and fit the model using the two training datasets
+from sklearn.linear_model import LinearRegression
+
+lr=LinearRegression()
+
+lr.fit(X_train, y_train)
+
+
