@@ -1,0 +1,14 @@
+from seaborn import load_dataset
+dfdi = load_dataset("diamonds")
+dfdi.head()
+
+##Convert cateogrical columns into numerical columns with the corresponding category codes
+import pandas as pd
+
+dfdi.cut = pd.Categorical(dfdi.cut) 
+dfdi.color = pd.Categorical(dfdi.color) 
+dfdi.clarity = pd.Categorical(dfdi.clarity) 
+
+dfdi.cut = dfdi.cut.cat.codes  
+dfdi.color = dfdi.color.cat.codes
+dfdi.clarity = dfdi.clarity.cat.codes
